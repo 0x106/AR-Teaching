@@ -23,18 +23,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        // we create the scene here since the gridScene will modify it, but we may want to do other
+        // additions / modifications later
+        let defaultScene = SCNScene()
+        let grid = CreateAndManageNodes(defaultScene, 0, 0, -1)
         
         // Set the scene to the view
-        sceneView.scene = scene
+        sceneView.scene = defaultScene//grid.getScene()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARWorldTrackingSessionConfiguration()
 
         // Run the view's session
         sceneView.session.run(configuration)

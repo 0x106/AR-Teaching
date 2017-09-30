@@ -21,7 +21,7 @@ import SceneKit
 class CreateAndManageNodes {
     
     private let numCubes = 9
-    private let cubeSpacing: Float = 0.2    // spacing between each of the cubes in metres.
+    private let cubeSpacing: Float = 5   // spacing between each of the cubes in metres.
     private let cubeSize: Float = 0.05
     
     private let scene: SCNScene
@@ -36,37 +36,36 @@ class CreateAndManageNodes {
         self.y = y
         self.z = z
         
+        // -- if we only want to add a single default cube
         // let defaultCube = createCube(0, 0)
         // self.scene.rootNode.addChildNode(defaultCube)
         
         createGrid()
     }
     
+    func getScene() -> SCNScene {
+        return self.scene
+    }
+    
     func createGrid() {
-        
         // this is hardcoded at the moment but should ideally use self.numCubes to construct the arrays
         let idx: [Float] = [-1, 0, 1]
         let kdx: [Float] = [-1, 0, 1]
         
         for i in idx {
             for k in kdx {
-               
                 let x = i * cubeSpacing
                 let y = k * cubeSpacing
-                
                 let cube = createCube(x, y)
                 self.scene.rootNode.addChildNode(cube)
             }
         }
-        
     }
     
     func createCube(_ x: Float, _ y: Float) -> SCNNode {
-        
         let cubeSize = cg(self.cubeSize)
         let box = SCNBox(width: cubeSize, height: cubeSize, length: cubeSize, chamferRadius: cubeSize / 10)
         let matrix = translate(Float(x), Float(y) - 0.5)
-        
         return createNode(box, matrix)
     }
     
@@ -78,9 +77,9 @@ class CreateAndManageNodes {
     
     // any elements associated with the node, such as labels etc, can be added here.
     private func createNode(_ geometry: SCNGeometry, _ matrix: SCNMatrix4) -> SCNNode {
-        let material = SCNMaterial()
-        material.diffuse.contents = UIColor(named: "magenta")
-        geometry.firstMaterial = material
+        geometry.firstMaterial?.diffuse.contents = UIColor.magenta
+        geometry.firstMaterial?.transparency = CGFloat(0.5)
+//        geometry.firstMaterial?.diffuse.contents = UIColor(magenta: 1.0, alpha: 0.5)
         let node = SCNNode(geometry: geometry)
         node.transform = matrix
         return node
