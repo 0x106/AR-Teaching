@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA21B5AF1F8067D5000C949B /* AnimateNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA21B5AE1F8067D5000C949B /* AnimateNodes.swift */; };
 		DA7E726A1F78F3CF006CC9C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7E72691F78F3CF006CC9C3 /* AppDelegate.swift */; };
 		DA7E726C1F78F3CF006CC9C3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7E726B1F78F3CF006CC9C3 /* art.scnassets */; };
 		DA7E726E1F78F3CF006CC9C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7E726D1F78F3CF006CC9C3 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA21B5AE1F8067D5000C949B /* AnimateNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateNodes.swift; sourceTree = "<group>"; };
 		DA7E72661F78F3CF006CC9C3 /* Teaching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teaching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7E72691F78F3CF006CC9C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA7E726B1F78F3CF006CC9C3 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				DA7E726B1F78F3CF006CC9C3 /* art.scnassets */,
 				DA7E726D1F78F3CF006CC9C3 /* ViewController.swift */,
 				DAC751771F78F43B00D5A1FB /* CreateAndManageNodes.swift */,
+				DA21B5AE1F8067D5000C949B /* AnimateNodes.swift */,
 				DA7E726F1F78F3CF006CC9C3 /* Main.storyboard */,
 				DA7E72721F78F3CF006CC9C3 /* Assets.xcassets */,
 				DA7E72741F78F3CF006CC9C3 /* LaunchScreen.storyboard */,
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7E726E1F78F3CF006CC9C3 /* ViewController.swift in Sources */,
+				DA21B5AF1F8067D5000C949B /* AnimateNodes.swift in Sources */,
 				DA7E726A1F78F3CF006CC9C3 /* AppDelegate.swift in Sources */,
 				DAC751781F78F43B00D5A1FB /* CreateAndManageNodes.swift in Sources */,
 			);

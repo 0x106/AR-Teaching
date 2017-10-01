@@ -79,7 +79,6 @@ class CreateAndManageNodes {
     private func createNode(_ geometry: SCNGeometry, _ matrix: SCNMatrix4) -> SCNNode {
         geometry.firstMaterial?.diffuse.contents = UIColor.magenta
         geometry.firstMaterial?.transparency = CGFloat(0.5)
-//        geometry.firstMaterial?.diffuse.contents = UIColor(magenta: 1.0, alpha: 0.5)
         let node = SCNNode(geometry: geometry)
         node.transform = matrix
         return node

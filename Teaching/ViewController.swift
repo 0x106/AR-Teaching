@@ -26,10 +26,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // we create the scene here since the gridScene will modify it, but we may want to do other
         // additions / modifications later
         let defaultScene = SCNScene()
-        let grid = CreateAndManageNodes(defaultScene, 0, 0, -1)
+        let _ = CreateAndManageNodes(defaultScene, 0, 0, -1)
+        let _ = AnimateNodes(defaultScene)
         
         // Set the scene to the view
-        sceneView.scene = defaultScene//grid.getScene()
+        sceneView.scene = defaultScene
     }
     
     override func viewWillAppear(_ animated: Bool) {
