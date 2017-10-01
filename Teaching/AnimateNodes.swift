@@ -31,21 +31,22 @@ class AnimateNodes {
         }
     }
     
-    // spin around the pivot, which is ~not~ in the same place as the centre
-    // of the node
+    // spin around the pivot, which is ~not~ in the same place as the centre of the node
     func localSpinOnDistalPivot () {
         
         let matrix = SCNMatrix4MakeTranslation(0.1, 0, 0)
         
+        // rotate a single node
         let node = self.scene.rootNode.childNodes[1]
         node.pivot = matrix
         startAnimationLocalAxisSpin(node: node)
         
-//        for node in self.scene.rootNode.childNodes {
-//            node.pivot = matrix
-//            startAnimationLocalAxisSpin(node: node)
-//        }
-        
+        // rotate all the nodes
+        // for node in self.scene.rootNode.childNodes {
+        //    node.pivot = matrix
+        //    startAnimationLocalAxisSpin(node: node)
+        //}
+    
     }
 
     func startAnimationLocalAxisSpin(node: SCNNode) {
