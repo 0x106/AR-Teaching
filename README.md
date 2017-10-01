@@ -1,5 +1,9 @@
 # ARKit Teaching Resources
 
+0. ViewController
+	- hit testing
+	  - change the colour of any nodes that are tapped
+
 1. CreateAndManageNodes
 	- create a wall (3x3 grid) of simple cubes
 	- change the colour of each cube
