@@ -5,6 +5,7 @@
 //  Created by Jordan Campbell on 25/09/17.
 //  Copyright © 2017 Jordan Campbell. All rights reserved.
 //
+// all line stuff from https://github.com/gao0122/ARKit-Example-by-Apple/blob/master/ARKitExample/UI%20Elements/HitTestVisualization.swift
 
 import UIKit
 import SceneKit
@@ -13,6 +14,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    let overlayView = LineOverlayView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +25,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        overlayView.backgroundColor = UIColor.clear
+        overlayView.frame = sceneView.frame
+        sceneView.addSubview(overlayView)
+        
         // we create the scene here since the gridScene will modify it, but we may want to do other
         // additions / modifications later
         let defaultScene = SCNScene()
         let _ = CreateAndManageNodes(defaultScene, 0, 0, -1)
         let _ = AnimateNodes(defaultScene)
-        
+
         // Set the scene to the view
         sceneView.scene = defaultScene
     }
@@ -80,4 +86,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
+    // This is the new code added to account for hit tests.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if let touchLocation = touches.first?.location(in: sceneView) {
+            
+            // Touch to 3D Object
+            if let hit = sceneView.hitTest(touchLocation, options: nil).first {
+                hit.node.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+                return
+            }
+
+        }
+    }
+    
 }
