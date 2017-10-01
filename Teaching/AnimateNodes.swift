@@ -16,16 +16,39 @@ class AnimateNodes {
     // perform initialisation given current scene and root anchor position
     init(_ scene: SCNScene) {
         self.scene = scene
+        
+        // spin on your own axis
         localSpin()
+        
+        // spin around a random point
+        localSpinOnDistalPivot()
     }
     
+    // spin around the axis through the centre of the node
     func localSpin() {
         for node in self.scene.rootNode.childNodes {
-            startAnimationLocalAxis(node: node)
+            startAnimationLocalAxisSpin(node: node)
         }
     }
+    
+    // spin around the pivot, which is ~not~ in the same place as the centre
+    // of the node
+    func localSpinOnDistalPivot () {
+        
+        let matrix = SCNMatrix4MakeTranslation(0.1, 0, 0)
+        
+        let node = self.scene.rootNode.childNodes[1]
+        node.pivot = matrix
+        startAnimationLocalAxisSpin(node: node)
+        
+//        for node in self.scene.rootNode.childNodes {
+//            node.pivot = matrix
+//            startAnimationLocalAxisSpin(node: node)
+//        }
+        
+    }
 
-    func startAnimationLocalAxis(node: SCNNode) {
+    func startAnimationLocalAxisSpin(node: SCNNode) {
         let rotation = SCNAction.rotateBy(x: 0, y: 1, z: 0, duration: 1)
         node.runAction(SCNAction.repeatForever(rotation)!)
     }
