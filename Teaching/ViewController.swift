@@ -5,7 +5,6 @@
 //  Created by Jordan Campbell on 25/09/17.
 //  Copyright © 2017 Jordan Campbell. All rights reserved.
 //
-// all line stuff from https://github.com/gao0122/ARKit-Example-by-Apple/blob/master/ARKitExample/UI%20Elements/HitTestVisualization.swift
 
 import UIKit
 import SceneKit
@@ -14,7 +13,6 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    let overlayView = LineOverlayView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +22,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
-        overlayView.backgroundColor = UIColor.clear
-        overlayView.frame = sceneView.frame
-        sceneView.addSubview(overlayView)
         
         // we create the scene here since the gridScene will modify it, but we may want to do other
         // additions / modifications later
@@ -100,5 +94,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         }
     }
+
     
 }
